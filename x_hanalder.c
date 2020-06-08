@@ -6,23 +6,25 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 04:35:41 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/08 06:34:43 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/08 07:08:46 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	hash_check(t_data *data_list)
+void	hash_check(t_data *data_list, char *hex)
 {
-	if (data_list->flags & HASH_FLAG)
+	if (data_list->flags & HASH_FLAG && hex[0] != 0)
 		data_list->len += 2;
 }
 
-static void	x_precision_print_handler(t_data *data_list, int numb_len)
+void	x_precision_print_handler(t_data *data_list, int numb_len, char *hex)
 {
-	if (data_list->flags & HASH_FLAG && data_list->type == 'x')
+	if (data_list->flags & HASH_FLAG && data_list->type == 'x' &&
+	hex[0] != 0)
 		write(1, "0x", 2);
-	else if (data_list->flags & HASH_FLAG && data_list->type == 'X')
+	else if (data_list->flags & HASH_FLAG && data_list->type == 'X'
+	&& hex[0] != 0)
 		write(1, "0X", 2);
 	while (data_list->precision > numb_len)
 	{
@@ -35,14 +37,14 @@ int	x_simple_handler(char *hex, t_data *data_list, int numb_len)
 {
 	if (data_list->flags & NULL_FLAG)
 	{
-		x_precision_print_handler(data_list, numb_len);
+		x_precision_print_handler(data_list, numb_len, hex);
 		space_printer(data_list);
 		ft_putstr(hex);
 	}
 	else
 	{
 		space_printer(data_list);
-		x_precision_print_handler(data_list, numb_len);
+		x_precision_print_handler(data_list, numb_len, hex);
 		ft_putstr(hex);
 	}
 	return (1);
@@ -80,15 +82,15 @@ int x_precision_handler(char *hex,t_data *data_list, int numb_len)
 	data_list->len = data_list->precision;
 	if (data_list->flags & MINUS_FLAG)
 	{
-		x_precision_print_handler(data_list, numb_len);
-		hash_check(data_list);
+		x_precision_print_handler(data_list, numb_len, hex);
+		hash_check(data_list, hex);
 		ft_putstr(hex);
 		space_printer(data_list);
 		return (1);
 	}
-	hash_check(data_list);
+	hash_check(data_list, hex);
 	space_printer(data_list);
-	x_precision_print_handler(data_list, numb_len);
+	x_precision_print_handler(data_list, numb_len, hex);
 	ft_putstr(hex);
 	return (1);
 }
@@ -101,14 +103,15 @@ int	x_handler(t_data *data_list, va_list ***args)
 
 	res = va_arg(***args, unsigned int);
 	converter(hexadecimal, res);
-	numb_len = ft_strlen(hexadecimal);
+	if(!(numb_len = ft_strlen(hexadecimal)))
+		numb_len = 1;
 	data_list->len = numb_len;
 	if ((data_list->precision != -1) && data_list->precision > numb_len)
 		return (x_precision_handler(hexadecimal, data_list, numb_len));
-	hash_check(data_list);
+	hash_check(data_list, hexadecimal);
 	if ((data_list->flags & MINUS_FLAG))
 	{
-		x_precision_print_handler(data_list, numb_len);
+		x_precision_print_handler(data_list, numb_len, hexadecimal);
 		ft_putstr(hexadecimal);
 		space_printer(data_list);
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 21:33:36 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/08 05:52:20 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/08 07:01:47 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,8 @@ void	ft_putstr(char *s)
 {
 	if (!s)
 		return ;
-	write(1, s, ft_strlen(s));
+	if (s[0] == 0)
+		write(1, "0", 1);
+	else
+		write(1, s, ft_strlen(s));
 }

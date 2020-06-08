@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 16:23:28 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/08 06:31:31 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/08 07:08:32 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int	x_handler(t_data *data_list, va_list ***args);
 void	ft_putstr(char *s);
 int x_precision_handler(char *hex,t_data *data_list, int numb_len);
 int	x_simple_handler(char *hex, t_data *data_list, int numb_len);
-void	hash_check(t_data *data_list);
+void	hash_check(t_data *data_list, char *hex);
+void	x_precision_print_handler(t_data *data_list, int numb_len, char *hex);
 int	greater_x_handler(t_data *data_list, va_list ***args);
 
 
