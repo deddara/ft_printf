@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 21:33:20 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/04 18:29:05 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/09 23:57:46 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,14 +146,21 @@ char	*form_parser(const char *str, va_list *args, int *count)
 	str = get_width(str, args, data_list);	//получение ширины.
 	str = get_precision(str, args, data_list); //получение точности
 	str = get_l_specifier(str,data_list); //получение спецификатора
+	if (!*str)
+	{
+		*count = 0;
+		ft_lstclear(data_list);
+		return (NULL);
+	}
 	if(!(get_type(str, data_list))) //получение типа
 	{
 		write(1, "%", 1);
-		*count += 1;
+		*count = 1;
 		return (NULL);
 	}
 	if(!(data_processing(data_list, &(args))))
 		return (NULL);
 	*count += data_list->len;
+	ft_lstclear(data_list);
 	return ((char*)str);
 }
