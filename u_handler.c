@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 06:10:29 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/08 06:02:38 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/10 00:14:27 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	u_handler(t_data *data_list, va_list ***args)
 	res = va_arg(***args, unsigned int);
 	numb_len = unum_len(res);
 	data_list->len = numb_len;
-	if ((data_list->precision != -1) && (data_list->precision > numb_len))
+	if ((data_list->precision != -1) && (data_list->precision >(int)numb_len))
 		return (u_precision_handler(res, data_list, numb_len));
 	if ((data_list->flags & MINUS_FLAG))
 	{

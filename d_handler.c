@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/04 19:07:52 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/07 05:09:42 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/10 01:00:46 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	d_precision_print_handler(int res, t_data *data_list, int numb_len)
 
 static int	d_simple_handler(int res, t_data *data_list, int numb_len)
 {
-	if (data_list->flags & NULL_FLAG)
+	if (data_list->flags & NULL_FLAG && data_list->precision == -1)
 	{
 		d_precision_print_handler(res, data_list, numb_len);
 		space_printer(data_list);

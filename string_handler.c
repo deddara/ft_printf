@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/05 03:36:08 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/06 22:38:05 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/10 00:16:54 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void s_prec_handler_add(char *str, t_data *data_list)
 {
-	if (data_list->precision < ft_strlen(str))
+	if (data_list->precision < (int)ft_strlen(str))
 	{
 		while ((data_list->precision) && *str)
 		{
@@ -33,7 +33,7 @@ static void s_prec_handler_add(char *str, t_data *data_list)
 
 static void s_prec_handler(char *str, t_data *data_list)
 {
-	if (data_list->precision < ft_strlen(str))
+	if (data_list->precision < (int)ft_strlen(str))
 	{
 		while ((data_list->precision) && *str)
 		{
@@ -63,7 +63,7 @@ static void	string_minus_handler(char *str, t_data *data_list)
 
 static void string_simple_handler(char *str, t_data *data_list)
 {
-	if(data_list->precision < ft_strlen(str) && data_list->precision != -1)
+	if(data_list->precision < (int)ft_strlen(str) && data_list->precision != -1)
 		data_list->len += data_list->precision;
 	else if (!(data_list->precision))
 		data_list->len += 0;

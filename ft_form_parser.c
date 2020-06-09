@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 21:33:20 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/09 23:57:46 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/10 00:53:49 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,8 @@ char	*form_parser(const char *str, va_list *args, int *count)
 	}
 	if(!(data_processing(data_list, &(args))))
 		return (NULL);
+	if(*count == -1)
+		*count = 0;
 	*count += data_list->len;
 	ft_lstclear(data_list);
 	return ((char*)str);

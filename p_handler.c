@@ -6,14 +6,14 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 19:20:00 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/09 05:51:02 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/10 00:13:29 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 
-void	p_precision_print_handler(t_data *data_list, int numb_len, char *hex)
+void	p_precision_print_handler(t_data *data_list, int numb_len)
 {
 	write(1, "0x", 2);
 	while (data_list->precision > numb_len)
@@ -26,7 +26,7 @@ void	p_precision_print_handler(t_data *data_list, int numb_len, char *hex)
 int	p_simple_handler(char *hex, t_data *data_list, int numb_len)
 {
 	space_printer(data_list);
-	p_precision_print_handler(data_list, numb_len, hex);
+	p_precision_print_handler(data_list, numb_len);
 	ft_putstr(hex);
 	return (1);
 }
@@ -63,14 +63,14 @@ int p_precision_handler(char *hex,t_data *data_list, int numb_len)
 	data_list->len = data_list->precision + 2;
 	if (data_list->flags & MINUS_FLAG)
 	{
-		p_precision_print_handler(data_list, numb_len, hex);
+		p_precision_print_handler(data_list, numb_len);
 		if (!(numb_len == 0 && data_list->precision >= 0))
 			ft_putstr(hex);
 		space_printer(data_list);
 		return (1);
 	}
 	space_printer(data_list);
-	p_precision_print_handler(data_list, numb_len, hex);
+	p_precision_print_handler(data_list, numb_len);
 	if (!(numb_len == 0 && data_list->precision >= 0))
 		ft_putstr(hex);
 	return (1);
@@ -91,7 +91,7 @@ int	p_handler(t_data *data_list, va_list ***args)
 		return (p_precision_handler(hexadecimal, data_list, numb_len));
 	if ((data_list->flags & MINUS_FLAG))
 	{
-		p_precision_print_handler(data_list, numb_len, hexadecimal);
+		p_precision_print_handler(data_list, numb_len);
 		ft_putstr(hexadecimal);
 		space_printer(data_list);
 		return (1);
