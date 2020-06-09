@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 22:12:54 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/08 06:32:53 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/09 04:41:58 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int data_processing(t_data *data_list, va_list **args)
 	else if(data_list->type == 'X')
 		return (greater_x_handler(data_list, &args));
 	else if (data_list->type == 'p')
-		return (1);
+		return (p_handler(data_list, &args));
 	else if (data_list->type == 'u')
 		return (u_handler(data_list, &args));
 	else if (data_list->type == '%')

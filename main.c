@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 16:25:14 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/08 07:11:34 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/09 05:50:14 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 int main()
 {
 	int i;
-	char *s = "yep hello ";
+	char *s = "ye";
 	//int res = ft_printf("%0+*d", -2);
-	i = printf("%#X", -434234);
+	i = ft_printf("%.1p", (void*)0);
 
 	printf("\n%d\n", i);
 	//int i = 10;
