@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   percent_handler.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/31 16:25:14 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/09 05:52:42 by deddara          ###   ########.fr       */
+/*   Created: 2020/06/09 19:42:35 by deddara           #+#    #+#             */
+/*   Updated: 2020/06/09 20:41:52 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int main()
+int	percent_handler(t_data *data_list, va_list ***args)
 {
-	int i;
-	char *s = "ye";
-	//int res = ft_printf("%0+*d", -2);
-	i = ft_printf("%.1p", (void*)0);
-
-	printf("\n%d\n", i);
-	//int i = 10;
-	//if (res == -1)
-	//	printf("POSHOL NA HUY");
+	data_list->len = 1;
+	if (data_list->flags & MINUS_FLAG)
+	{
+		write(1, "%", 1);
+		space_printer(data_list);
+	}
+	else
+	{
+		space_printer(data_list);
+		write(1, "%", 1);
+	}
+	return (1);
 }
