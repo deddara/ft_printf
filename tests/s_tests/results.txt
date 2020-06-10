@@ -1,0 +1,28 @@
+Test  19 (s_two_string_expansions2) : FAILED.
+    First line of code: {return test("..%s stuff %s", "a", "b");}
+      expected output : "..a stuff b"
+      your output     : "."
+      expected (nonprintable as hex) : "..a stuff b"
+      actual   (nonprintable as hex) : "."
+
+Test  20 (s_empty_string_expansion) : FAILED.
+    First line of code: {return test("this %s is empty", "");}
+      expected output : "this  is empty"
+      your output     : "t"
+      expected (nonprintable as hex) : "this  is empty"
+      actual   (nonprintable as hex) : "t"
+
+Test  21 (s_full_then_empty_string) : FAILED.
+    First line of code: {return test("this %s is %s", "hello", "");}
+      expected output : "this hello is "
+      your output     : "t"
+      expected (nonprintable as hex) : "this hello is "
+      actual   (nonprintable as hex) : "t"
+
+Test  22 (s_empty_then_full_string) : FAILED.
+    First line of code: {return test("this %s is %s", "", "hello");}
+      expected output : "this  is hello"
+      your output     : "t"
+      expected (nonprintable as hex) : "this  is hello"
+      actual   (nonprintable as hex) : "t"
+

@@ -1,0 +1,49 @@
+Test 868 (u_ullmax) : FAILED.
+    First line of code: {return test("%llu", ullmax);}
+      expected output : "9223372036854775807"
+      your output     : "4294967295"
+      expected (nonprintable as hex) : "9223372036854775807"
+      actual   (nonprintable as hex) : "4294967295"
+
+Test 869 (u_ulmax) : FAILED.
+    First line of code: {return test("%lu", ulmax);}
+      expected output : "9223372036854775807"
+      your output     : "4294967295"
+      expected (nonprintable as hex) : "9223372036854775807"
+      actual   (nonprintable as hex) : "4294967295"
+
+Test 880 (u_prec0val0_implicit) : FAILED.
+    First line of code: {return test("%.u", 0);}
+      expected output : ""
+      your output     : "0"
+      expected (nonprintable as hex) : ""
+      actual   (nonprintable as hex) : "0"
+
+Test 881 (u_prec0val0_w) : FAILED.
+    First line of code: {return test("%5.0u", 0);}
+      expected output : "     "
+      your output     : "    0"
+      expected (nonprintable as hex) : "     "
+      actual   (nonprintable as hex) : "    0"
+
+Test 882 (u_prec0val0_w_impl) : FAILED.
+    First line of code: {return test("%5.u", 0);}
+      expected output : "     "
+      your output     : "    0"
+      expected (nonprintable as hex) : "     "
+      actual   (nonprintable as hex) : "    0"
+
+Test 883 (u_prec0val0_wlj) : FAILED.
+    First line of code: {return test("%-5.0u", 0);}
+      expected output : "     "
+      your output     : "0    "
+      expected (nonprintable as hex) : "     "
+      actual   (nonprintable as hex) : "0    "
+
+Test 884 (u_prec0val0_wlj_impl) : FAILED.
+    First line of code: {return test("%-5.u", 0);}
+      expected output : "     "
+      your output     : "0    "
+      expected (nonprintable as hex) : "     "
+      actual   (nonprintable as hex) : "0    "
+

@@ -1,0 +1,7 @@
+Test 1289 (p_ftfc_5w_throwswarning) : FAILED.
+    First line of code: {return test("%5p", 0);}
+      expected output : "  0x0"
+      your output     : "   0x0"
+      expected (nonprintable as hex) : "  0x0"
+      actual   (nonprintable as hex) : "   0x0"
+
