@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 22:12:54 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/11 22:24:04 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/12 02:12:49 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,24 +49,71 @@ int char_handler(t_data *data_list, va_list ***args)
 	return (1);
 }
 
+static int add_s_dt_prsng(t_data *data_list, va_list **args)
+{
+	// if (data_list->type == 'x' && data_list->l_specifier & L_SPEC)
+	// 	return(l_x_handler(data_list, &args));
+	// else if (data_list->type == 'x' && data_list->l_specifier & LL_SPEC)
+	// 	return(ll_x_handler(data_list, &args));
+	// else if (data_list->type == 'x' && data_list->l_specifier & H_SPEC)
+	// 	return(h_x_handler(data_list, &args));
+	// else if (data_list->type == 'x' && data_list->l_specifier & HH_SPEC)
+	// 	return(hh_x_handler(data_list, &args));
+	// else if (data_list->type == 'X' && data_list->l_specifier & L_SPEC)
+	// 	return(l_X_handler(data_list, &args));
+	// else if (data_list->type == 'X' && data_list->l_specifier & LL_SPEC)
+	// 	return(ll_X_handler(data_list, &args));
+	// else if (data_list->type == 'X' && data_list->l_specifier & H_SPEC)
+	// 	return(h_X_handler(data_list, &args));
+	// else if (data_list->type == 'X' && data_list->l_specifier & HH_SPEC)
+	// 	return(hh_X_handler(data_list, &args));
+	// else
+	(1);
+}
+
+static int specifier_data_processing(t_data *data_list, va_list **args)
+{
+	if (data_list->type == 'd' && data_list->l_specifier & L_SPEC)
+		return(l_d_handler(data_list, &args));
+	// else if (data_list->type == 'd' && data_list->l_specifier & LL_SPEC)
+	// 	return(ll_d_handler(data_list, &args));
+	// else if (data_list->type == 'd' && data_list->l_specifier & H_SPEC)
+	// 	return(h_d_handler(data_list, &args));
+	// else if (data_list->type == 'd' && data_list->l_specifier & HH_SPEC)
+	// 	return(hh_d_handler(data_list, &args));
+	// else if (data_list->type == 'u' && data_list->l_specifier & L_SPEC)
+	// 	return(l_u_handler(data_list, &args));
+	// else if (data_list->type == 'u' && data_list->l_specifier & LL_SPEC)
+	// 	return(ll_u_handler(data_list, &args));
+	// else if (data_list->type == 'u' && data_list->l_specifier & H_SPEC)
+	// 	return(h_u_handler(data_list, &args));
+	// else if (data_list->type == 'u' && data_list->l_specifier & HH_SPEC)
+	// 	return(hh_u_handler(data_list, &args));
+	else
+		return(add_s_dt_prsng(data_list, args));
+	return (0);
+}
+
 int data_processing(t_data *data_list, va_list **args)
 {
-	if (data_list->type == 'd')
+	if (data_list->type == 'd' && !data_list->l_specifier)
 		return (d_handler(data_list, &(args)));
 	else if(data_list->type == 'c')
 		return (char_handler(data_list, &(args)));
 	else if (data_list->type == 's')
-		return(string_handler(data_list, &(args)));
+		return(string_handler(data_list, &(args)) && !data_list->l_specifier);
 	else if (data_list->type == 'x')
-		return(x_handler(data_list, &args));
+		return(x_handler(data_list, &args) && !data_list->l_specifier);
 	else if(data_list->type == 'X')
 		return (greater_x_handler(data_list, &args));
 	else if (data_list->type == 'p')
 		return (p_handler(data_list, &args));
-	else if (data_list->type == 'u')
+	else if (data_list->type == 'u' && !data_list->l_specifier)
 		return (u_handler(data_list, &args));
 	else if (data_list->type == '%')
 		return (percent_handler(data_list));
+	else if (data_list->l_specifier)
+		return(specifier_data_processing(data_list, args));
 	else
 		return (0);
 }

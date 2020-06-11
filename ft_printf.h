@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 16:23:28 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/09 23:51:59 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/12 02:04:50 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int	ft_printf(const char *str, ...);
 char	*form_parser(const char *str, va_list *args, int *count);
 int data_processing(t_data *data_list, va_list **args);
 int	num_len(int n);
+int	l_num_len(long int n);
+int	ll_num_len(long long int n);
 void	ft_putnbr(int n);
+void	ft_l_putnbr(long int n);
 void space_printer(t_data *data_list);
 int	d_handler(t_data *data_list, va_list ***args);
 int char_handler(t_data *data_list, va_list ***args);
@@ -46,5 +49,6 @@ int	p_handler(t_data *data_list, va_list ***args);
 void	ft_p_putstr(char *s);
 int	percent_handler(t_data *data_list);
 void	ft_lstclear(t_data *data_list);
+int	l_d_handler(t_data *data_list, va_list ***args);
 
 #endif
