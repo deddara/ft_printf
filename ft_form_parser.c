@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 21:33:20 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/10 00:53:49 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/11 07:23:04 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static char	*get_width(const char *str, va_list *args, t_data *data_list)
 			break ;
 		str++;
 	}
+	data_list->width < 0 ? data_list->width * (-1) : data_list->width * 1;
 	return ((char *)str);
 }
 
@@ -148,7 +149,7 @@ char	*form_parser(const char *str, va_list *args, int *count)
 	str = get_l_specifier(str,data_list); //получение спецификатора
 	if (!*str)
 	{
-		*count = 0;
+		*count = -2;
 		ft_lstclear(data_list);
 		return (NULL);
 	}
@@ -160,8 +161,6 @@ char	*form_parser(const char *str, va_list *args, int *count)
 	}
 	if(!(data_processing(data_list, &(args))))
 		return (NULL);
-	if(*count == -1)
-		*count = 0;
 	*count += data_list->len;
 	ft_lstclear(data_list);
 	return ((char*)str);

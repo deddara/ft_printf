@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/04 19:07:52 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/10 01:00:46 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/11 03:36:20 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,12 @@ int			d_handler(t_data *data_list, va_list ***args)
 	res = va_arg(***args, int);
 	numb_len = num_len(res);
 	data_list->len = numb_len;
+	if (data_list->precision == 0 && !res)
+	{
+		data_list->len = 0;
+		space_printer(data_list);
+		return (1);
+	}
 	if ((data_list->precision != -1) && (data_list->precision > numb_len))
 		return (d_precision_handler(res, data_list, numb_len));
 	if ((data_list->flags & MINUS_FLAG))

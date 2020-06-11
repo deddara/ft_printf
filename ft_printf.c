@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 16:25:23 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/10 00:00:26 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/11 06:45:39 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 int	ft_printf(const char *str, ...)
 {
 	va_list args;
-	int count = -1;
+	int count = 0;
 	char *ptr;
 
 	va_start(args, str);
 	while (*str)
 	{
-		if (count == 0)
+		if (count == -2)
 		{
 			va_end(args);
 			return (-1);

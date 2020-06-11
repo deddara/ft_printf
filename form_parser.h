@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 19:27:29 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/07 04:21:05 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/11 07:20:56 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 typedef	struct		s_data
 {
 	unsigned char	flags;
-	unsigned int	width;
+	int	width;
 	int	precision;
 	unsigned char	l_specifier;
 	char			type;

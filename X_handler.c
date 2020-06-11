@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 06:24:55 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/08 07:07:31 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/11 06:38:06 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,12 @@ int	greater_x_handler(t_data *data_list, va_list ***args)
 	int				numb_len;
 
 	res = va_arg(***args, unsigned int);
+	if (data_list->precision == 0 && !res)
+	{
+		data_list->len = 0;
+		space_printer(data_list);
+		return (1);
+	}
 	converter(hexadecimal, res);
 	if(!(numb_len = ft_strlen(hexadecimal)))
 		numb_len = 1;

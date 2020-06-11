@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 19:20:00 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/10 00:13:29 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/11 06:35:28 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ int	p_handler(t_data *data_list, va_list ***args)
 
 	res = va_arg(***args, size_t);
 	converter(hexadecimal, res);
-	numb_len = ft_strlen(hexadecimal);
+	if(!(numb_len = ft_strlen(hexadecimal)))
+		numb_len = 1;
 	data_list->len = numb_len + 2;
 	if (((data_list->precision != -1) && data_list->precision > numb_len)
 	|| (data_list->precision != -1 && numb_len == 0))
