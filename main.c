@@ -1,46 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/31 16:25:23 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/11 23:42:41 by deddara          ###   ########.fr       */
+/*   Created: 2020/05/31 16:25:14 by deddara           #+#    #+#             */
+/*   Updated: 2020/06/12 00:18:29 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *str, ...)
+int main()
 {
-	va_list args;
-	int count = 0;
-	char *ptr;
+	int i;
+	//int res = ft_printf("%0+*d", -2);
+	i = ft_printf("%*i", -14, 94827);;
 
-	va_start(args, str);
-	while (*str)
-	{
-		if (count == -2)
-		{
-			va_end(args);
-			return (-1);
-		}
-		ptr = (char *)str;
-		if(*str != '%')
-		{
-			write(1, &*str, 1);
-			count++;
-			str++;
-			continue ;
-		}
-		if(!(str = form_parser(str, &args, &count)))
-			str = ptr;
-		str++;
-	}
-	va_end(args);
-	if (count == -2)
-		return (-1);
-	return(count);
+	printf("\n%d\n", i);
+	//int i = 10;
+	//if (res == -1)
+	//	printf("POSHOL NA HUY");
 }
-
