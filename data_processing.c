@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 22:12:54 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/09 20:47:47 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/11 22:24:04 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void space_printer(t_data *data_list)
 {
-	while (data_list->width > data_list->len)
+	while ((unsigned int)data_list->width > data_list->len)
 	{
 		if ((data_list->flags & NULL_FLAG) && (data_list->precision) == -1
 		&& (data_list->type == 'd' || data_list->type == 'u' || data_list->type == 'x'
