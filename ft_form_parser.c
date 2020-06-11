@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 21:33:20 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/11 07:23:04 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/11 22:11:48 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,11 @@ static char	*get_width(const char *str, va_list *args, t_data *data_list)
 			break ;
 		str++;
 	}
-	data_list->width < 0 ? data_list->width * (-1) : data_list->width * 1;
+	if (data_list->width < 0)
+	{
+		data_list->width = data_list->width * (-1);
+		data_list->flags = data_list->flags | MINUS_FLAG;
+	}
 	return ((char *)str);
 }
 
