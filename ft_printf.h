@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 16:23:28 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/12 09:42:32 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/12 09:58:23 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ int	d_handler(t_data *data_list, va_list ***args);
 int char_handler(t_data *data_list, va_list ***args);
 int	string_handler(t_data *data_list, va_list ***args);
 int	u_handler(t_data *data_list, va_list ***args);
+void	u_precision_print_handler(t_data *data_list, int numb_len);
+int	u_l_handler(t_data *data_list, va_list ***args);
+int	u_ll_handler(t_data *data_list, va_list ***args);
+int	u_h_handler(t_data *data_list, va_list ***args);
+int	u_hh_handler(t_data *data_list, va_list ***args);
 int	x_handler(t_data *data_list, va_list ***args);
 int	x_l_handler(t_data *data_list, va_list ***args);
 int	x_ll_handler(t_data *data_list, va_list ***args);

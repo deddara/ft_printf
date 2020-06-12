@@ -1,50 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   u_handler.c                                        :+:      :+:    :+:   */
+/*   u_h_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/07 06:10:29 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/12 09:59:50 by deddara          ###   ########.fr       */
+/*   Created: 2020/06/12 10:02:39 by deddara           #+#    #+#             */
+/*   Updated: 2020/06/12 10:19:27 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	u_precision_print_handler(t_data *data_list, int numb_len)
-{
-	while (data_list->precision > numb_len)
-	{
-		write(1, "0", 1);
-		data_list->precision--;
-	}
-}
 
-static int	u_precision_handler(unsigned int res, t_data *data_list, int numb_len)
+static int	u_precision_handler(unsigned short int res, t_data *data_list, int numb_len)
 {
 	data_list->len = data_list->precision;
 	if (data_list->flags & MINUS_FLAG)
 	{
 		u_precision_print_handler(data_list, numb_len);
-		ft_u_putnbr(res);
+		ft_u_putnbr((unsigned int)res);
 		space_printer(data_list);
 		return (1);
 	}
 	space_printer(data_list);
 	u_precision_print_handler(data_list, numb_len);
-	ft_u_putnbr(res);
+	ft_u_putnbr((unsigned int)res);
 	return (1);
 }
 
 
-int	u_handler(t_data *data_list, va_list ***args)
+int	u_h_handler(t_data *data_list, va_list ***args)
 {
-	unsigned int	res;
+	unsigned short int	res;
 	unsigned int	numb_len;
 
-	res = va_arg(***args, unsigned int);
-	numb_len = unum_len(res);
+	res = va_arg(***args, int);
+	numb_len = unum_h_len(res);
 	data_list->len = numb_len;
 	if (data_list->precision == 0 && !res)
 	{
@@ -57,11 +49,11 @@ int	u_handler(t_data *data_list, va_list ***args)
 	if ((data_list->flags & MINUS_FLAG))
 	{
 		u_precision_print_handler(data_list, numb_len);
-		ft_u_putnbr(res);
+		ft_u_putnbr((unsigned int)res);
 		space_printer(data_list);
 		return (1);
 	}
 	space_printer(data_list);
-	ft_u_putnbr(res);
+	ft_u_putnbr((unsigned int)res);
 	return (1);
 }
