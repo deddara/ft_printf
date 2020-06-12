@@ -6,11 +6,11 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 20:50:27 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/01 23:38:31 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/12 02:51:54 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "additional_funcs.h"
 
 int	ft_isdigit(int c)
 {

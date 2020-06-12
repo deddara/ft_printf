@@ -6,11 +6,11 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 21:33:36 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/08 07:01:47 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/12 02:52:00 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "additional_funcs.h"
 
 void	ft_putstr(char *s)
 {

@@ -1,56 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   x_hanalder.c                                       :+:      :+:    :+:   */
+/*   x_ll_handler.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/08 04:35:41 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/12 09:24:03 by deddara          ###   ########.fr       */
+/*   Created: 2020/06/12 09:25:08 by deddara           #+#    #+#             */
+/*   Updated: 2020/06/12 09:26:48 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	hash_check(t_data *data_list, char *hex)
-{
-	if (data_list->flags & HASH_FLAG && hex[0] != 0)
-		data_list->len += 2;
-}
 
-void	x_precision_print_handler(t_data *data_list, int numb_len, char *hex)
-{
-	if (data_list->flags & HASH_FLAG && data_list->type == 'x' &&
-	hex[0] != 0)
-		write(1, "0x", 2);
-	else if (data_list->flags & HASH_FLAG && data_list->type == 'X'
-	&& hex[0] != 0)
-		write(1, "0X", 2);
-	while (data_list->precision > numb_len)
-	{
-		write(1, "0", 1);
-		data_list->precision--;
-	}
-}
-
-int	x_simple_handler(char *hex, t_data *data_list, int numb_len)
-{
-	if (data_list->flags & NULL_FLAG)
-	{
-		x_precision_print_handler(data_list, numb_len, hex);
-		space_printer(data_list);
-		ft_putstr(hex);
-	}
-	else
-	{
-		space_printer(data_list);
-		x_precision_print_handler(data_list, numb_len, hex);
-		ft_putstr(hex);
-	}
-	return (1);
-}
-
-static void	converter(char *hexadecimal, unsigned int res)
+static void	converter(char *hexadecimal, size_t res)
 {
 	int j;
 	int i;
@@ -77,31 +40,13 @@ static void	converter(char *hexadecimal, unsigned int res)
 	free (reverse);
 }
 
-int x_precision_handler(char *hex,t_data *data_list, int numb_len)
+int	x_ll_handler(t_data *data_list, va_list ***args)
 {
-	data_list->len = data_list->precision;
-	if (data_list->flags & MINUS_FLAG)
-	{
-		x_precision_print_handler(data_list, numb_len, hex);
-		hash_check(data_list, hex);
-		ft_putstr(hex);
-		space_printer(data_list);
-		return (1);
-	}
-	hash_check(data_list, hex);
-	space_printer(data_list);
-	x_precision_print_handler(data_list, numb_len, hex);
-	ft_putstr(hex);
-	return (1);
-}
-
-int	x_handler(t_data *data_list, va_list ***args)
-{
-	unsigned int				res;
+	size_t	res;
 	char			hexadecimal[100];
 	int				numb_len;
 
-	res = va_arg(***args, unsigned int);
+	res = va_arg(***args, size_t);
 	if (data_list->precision == 0 && !res)
 	{
 		data_list->len = 0;

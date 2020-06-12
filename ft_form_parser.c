@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 21:33:20 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/12 01:29:42 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/12 09:32:21 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ const char *get_l_specifier(const char *str, t_data *data_list)
 			if ((data_list->l_specifier & L_SPEC))
 			{
 				data_list->l_specifier = data_list->l_specifier | LL_SPEC;
+				str++;
 				return((char*)str);
 			}
 			else
@@ -135,6 +136,7 @@ const char *get_l_specifier(const char *str, t_data *data_list)
 			if ((data_list->l_specifier & H_SPEC))
 			{
 				data_list->l_specifier = data_list->l_specifier | HH_SPEC;
+				str++;
 				return((char*)str);
 			}
 			else

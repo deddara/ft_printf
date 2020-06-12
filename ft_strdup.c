@@ -6,11 +6,11 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 21:11:06 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/05 03:58:11 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/12 02:52:01 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "additional_funcs.h"
 
 char	*ft_strdup(const char *src)
 {

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   d_handler.c                                        :+:      :+:    :+:   */
+/*   d_ll_handler.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/04 19:07:52 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/12 03:06:48 by deddara          ###   ########.fr       */
+/*   Created: 2020/06/12 07:24:35 by deddara           #+#    #+#             */
+/*   Updated: 2020/06/12 08:18:44 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	d_precision_print_handler(int res, t_data *data_list, int numb_len)
+static void	d_precision_print_handler(long long int res, t_data *data_list, int numb_len)
 {
 	if (res < 0)
 		write(1, "-", 1);
@@ -27,26 +27,26 @@ static void	d_precision_print_handler(int res, t_data *data_list, int numb_len)
 	}
 }
 
-static int	d_simple_handler(int res, t_data *data_list, int numb_len)
+static int	d_simple_handler(long long int res, t_data *data_list, int numb_len)
 {
 	if (data_list->flags & NULL_FLAG && data_list->precision == -1)
 	{
 		d_precision_print_handler(res, data_list, numb_len);
 		space_printer(data_list);
 		if (!(data_list->precision == 0 && !res))
-			ft_putnbr(res);
+			ft_ll_putnbr(res);
 	}
 	else
 	{
 		space_printer(data_list);
 		d_precision_print_handler(res, data_list, numb_len);
 		if (!(data_list->precision == 0 && !res))
-			ft_putnbr(res);
+			ft_ll_putnbr(res);
 	}
 	return (1);
 }
 
-static void	d_flagcheck(int res, t_data *data_list)
+static void	d_flagcheck(long long int res, t_data *data_list)
 {
 	if (res < 0)
 	{
@@ -62,7 +62,7 @@ static void	d_flagcheck(int res, t_data *data_list)
 	}
 }
 
-static int	d_precision_handler(int res, t_data *data_list, int numb_len)
+static int	d_precision_handler(long long int res, t_data *data_list, int numb_len)
 {
 	data_list->len = data_list->precision;
 	if (data_list->flags & MINUS_FLAG)
@@ -70,7 +70,7 @@ static int	d_precision_handler(int res, t_data *data_list, int numb_len)
 		d_flagcheck(res, data_list);
 		d_precision_print_handler(res, data_list, numb_len);
 		if (!(data_list->precision == 0 && !res))
-			ft_putnbr(res);
+			ft_ll_putnbr(res);
 		space_printer(data_list);
 		return (1);
 	}
@@ -78,17 +78,17 @@ static int	d_precision_handler(int res, t_data *data_list, int numb_len)
 	space_printer(data_list);
 	d_precision_print_handler(res, data_list, numb_len);
 	if (!(data_list->precision == 0 && !res))
-		ft_putnbr(res);
+		ft_ll_putnbr(res);
 	return (1);
 }
 
-int			d_handler(t_data *data_list, va_list ***args)
+int			ll_d_handler(t_data *data_list, va_list ***args)
 {
-	int res;
-	int numb_len;
+	long long int	res;
+	int			numb_len;
 
-	res = va_arg(***args, int);
-	numb_len = num_len(res);
+	res = va_arg(***args, long long int);
+	numb_len = ll_num_len(res);
 	if(res == 0 && data_list->precision == 0)
 		numb_len = 0;
 	data_list->len = numb_len;
@@ -99,7 +99,7 @@ int			d_handler(t_data *data_list, va_list ***args)
 	{
 		d_precision_print_handler(res, data_list, numb_len);
 		if (!(data_list->precision == 0 && !res))
-			ft_putnbr(res);
+			ft_ll_putnbr(res);
 		space_printer(data_list);
 		return (1);
 	}

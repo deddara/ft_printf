@@ -6,12 +6,11 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 19:20:00 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/11 06:35:28 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/12 03:06:42 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
 
 void	p_precision_print_handler(t_data *data_list, int numb_len)
 {

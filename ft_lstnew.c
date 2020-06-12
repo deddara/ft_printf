@@ -6,11 +6,11 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 21:33:53 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/05 18:44:18 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/12 02:51:57 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "additional_funcs.h"
 
 t_data	*ft_lstnew()
 {

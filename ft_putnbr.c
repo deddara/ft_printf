@@ -6,11 +6,11 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/04 03:36:17 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/12 02:15:08 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/12 08:03:40 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "additional_funcs.h"
 
 static void		ft_recursion(int n)
 {
@@ -41,7 +41,7 @@ static void		ft_l_recursion(long int n)
 	char c;
 
 	if (n >= 10)
-		ft_recursion(n / 10);
+		ft_l_recursion(n / 10);
 	c = n % 10 + '0';
 	write(1, &c, 1);
 }

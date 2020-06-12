@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   X_handler.c                                        :+:      :+:    :+:   */
+/*   x_grt_ll_handler.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/08 06:24:55 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/12 09:07:59 by deddara          ###   ########.fr       */
+/*   Created: 2020/06/12 09:45:02 by deddara           #+#    #+#             */
+/*   Updated: 2020/06/12 09:45:18 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "ft_printf.h"
 
-static void	converter(char *hexadecimal,unsigned int res)
+
+static void	converter(char *hexadecimal, size_t res)
 {
 	int j;
 	int i;
-	unsigned int backup;
+	int backup;
 	char		*reverse;
 
 	if (!(reverse = (char *)malloc(sizeof(char) * 100)))
@@ -40,14 +40,13 @@ static void	converter(char *hexadecimal,unsigned int res)
 	free (reverse);
 }
 
-
-int	greater_x_handler(t_data *data_list, va_list ***args)
+int	x_grt_ll_handler(t_data *data_list, va_list ***args)
 {
-	unsigned int	res;
+	size_t	res;
 	char			hexadecimal[100];
 	int				numb_len;
 
-	res = va_arg(***args, unsigned int);
+	res = va_arg(***args, size_t);
 	if (data_list->precision == 0 && !res)
 	{
 		data_list->len = 0;
