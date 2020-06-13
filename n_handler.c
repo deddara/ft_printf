@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   n_handler.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/09 23:49:22 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/13 13:05:01 by deddara          ###   ########.fr       */
+/*   Created: 2020/06/13 12:34:40 by deddara           #+#    #+#             */
+/*   Updated: 2020/06/13 15:09:31 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "additional_funcs.h"
+#include "ft_printf.h"
 
-void	ft_lstclear(t_data *data_list)
+int	n_handler(t_data *data_list, va_list ***args, int len)
 {
-	if (data_list)
+	int *res;
+	int j[0];
+	if(!data_list->l_specifier)
 	{
-		free(data_list);
+		res = va_arg(***args, int *);
+		res = j;
+		*res = len;
+		printf("==%d", j[0]);
 	}
 }

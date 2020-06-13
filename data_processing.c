@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 22:12:54 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/13 09:40:29 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/13 13:23:32 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,5 +116,5 @@ int			data_processing(t_data *data_list, va_list **args)
 	else if (data_list->l_specifier)
 		return (specifier_data_processing(data_list, args));
 	else
-		return (0);
+		return (1);
 }

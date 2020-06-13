@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 16:23:28 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/13 12:07:09 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/13 13:34:44 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,7 @@ int		h_d_handler(t_data *data_list, va_list ***args);
 int		hh_d_handler(t_data *data_list, va_list ***args);
 void	ft_ll_putnbr(long long int n);
 char	*get_l_specifier(const char *str, t_data *data_list);
+int		n_handler(t_data *data_list, va_list ***args, int len);
+void	ft_lstclear_and_n(t_data *data_list, va_list **args, int len);
 
 #endif

@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_lstclear_and_n.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/09 23:49:22 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/13 13:05:01 by deddara          ###   ########.fr       */
+/*   Created: 2020/06/13 13:06:19 by deddara           #+#    #+#             */
+/*   Updated: 2020/06/13 13:34:34 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "additional_funcs.h"
 
-void	ft_lstclear(t_data *data_list)
+void	ft_lstclear_and_n(t_data *data_list, va_list **args, int len)
 {
+	if(data_list->type == 'n')
+		n_handler(data_list, &args, len);
 	if (data_list)
 	{
 		free(data_list);

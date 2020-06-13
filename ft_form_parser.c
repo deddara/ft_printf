@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 21:33:20 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/13 09:34:28 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/13 13:13:33 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ static int	get_type(const char *str, t_data *data_list)
 		data_list->type = 'X';
 	else if (*str == '%')
 		data_list->type = '%';
+	else if (*str == 'n')
+		data_list->type = 'n';
 	else
 		return (0);
 	return (1);
@@ -137,6 +139,6 @@ char		*form_parser(const char *str, va_list *args, int *count)
 	if (!(data_processing(data_list, &(args))))
 		return (NULL);
 	*count += data_list->len;
-	ft_lstclear(data_list);
+	ft_lstclear_and_n(data_list, &(args), *count);
 	return ((char*)str);
 }

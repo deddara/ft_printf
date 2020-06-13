@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 16:25:14 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/13 12:20:45 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/13 13:20:48 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 int main()
 {
 	int i;
+	int j[0];
 	//int res = ft_printf("%0+*d", -2);
-	i = ft_printf("%hhd", 23);
+	i = ft_printf("231 %n dfs   dfs\n", 3214, j);
 
+	printf("%d", j[0]);
 	printf("\n%d\n", i);
 	//int i = 10;
 	//if (res == -1)
