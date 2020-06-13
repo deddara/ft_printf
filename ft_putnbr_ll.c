@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 07:56:51 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/12 08:44:14 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/13 04:32:37 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ void			ft_hh_putnbr(signed char n)
 {
 	if (n == 0)
 		write(1, "0", 1);
+	else if(n == -128)
+	{
+		write(1, "128", 3);
+		return ;
+	}
 	else if (n < 0)
 	{
 		n = n * (-1);

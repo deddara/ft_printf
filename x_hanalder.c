@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 04:35:41 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/12 09:24:03 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/13 05:25:34 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	x_precision_print_handler(t_data *data_list, int numb_len, char *hex)
 
 int	x_simple_handler(char *hex, t_data *data_list, int numb_len)
 {
-	if (data_list->flags & NULL_FLAG)
+	if (data_list->flags & NULL_FLAG && data_list->precision == -1)
 	{
 		x_precision_print_handler(data_list, numb_len, hex);
 		space_printer(data_list);

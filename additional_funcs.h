@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 02:44:36 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/12 10:14:28 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/13 05:44:17 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ size_t			ft_strlen(const char *s);
 void			ft_u_putnbr(unsigned int n);
 void			ft_u_l_putnbr(unsigned long int n);
 void			ft_u_ll_putnbr(size_t n);
+void			ft_u_hh_putnbr(unsigned char n);
 int				unum_len(unsigned int n);
 int				unum_l_len(unsigned long int n);
 int				unum_ll_len(unsigned long int n);
