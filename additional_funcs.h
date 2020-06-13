@@ -6,13 +6,13 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 02:44:36 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/13 05:44:17 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/13 11:16:36 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ADDITIONAL_FUNCS_H
 # define ADDITIONAL_FUNCS_H
-#include "ft_printf.h"
+# include "ft_printf.h"
 
 int				ft_isdigit(int c);
 void			ft_lstclear(t_data *data_list);

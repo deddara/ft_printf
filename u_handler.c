@@ -6,13 +6,13 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 06:10:29 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/12 09:59:50 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/13 11:30:51 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	u_precision_print_handler(t_data *data_list, int numb_len)
+void		u_precision_print_handler(t_data *data_list, int numb_len)
 {
 	while (data_list->precision > numb_len)
 	{
@@ -21,7 +21,7 @@ void	u_precision_print_handler(t_data *data_list, int numb_len)
 	}
 }
 
-static int	u_precision_handler(unsigned int res, t_data *data_list, int numb_len)
+static int	u_prec_h(unsigned int res, t_data *data_list, int numb_len)
 {
 	data_list->len = data_list->precision;
 	if (data_list->flags & MINUS_FLAG)
@@ -37,8 +37,7 @@ static int	u_precision_handler(unsigned int res, t_data *data_list, int numb_len
 	return (1);
 }
 
-
-int	u_handler(t_data *data_list, va_list ***args)
+int			u_handler(t_data *data_list, va_list ***args)
 {
 	unsigned int	res;
 	unsigned int	numb_len;
@@ -52,8 +51,8 @@ int	u_handler(t_data *data_list, va_list ***args)
 		space_printer(data_list);
 		return (1);
 	}
-	if ((data_list->precision != -1) && (data_list->precision >(int)numb_len))
-		return (u_precision_handler(res, data_list, numb_len));
+	if ((data_list->precision != -1) && (data_list->precision > (int)numb_len))
+		return (u_prec_h(res, data_list, numb_len));
 	if ((data_list->flags & MINUS_FLAG))
 	{
 		u_precision_print_handler(data_list, numb_len);

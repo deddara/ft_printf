@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 23:49:22 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/12 02:51:56 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/13 11:16:59 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstclear(t_data *data_list)
 {
-	if(data_list)
+	if (data_list)
 	{
 		free(data_list);
 	}

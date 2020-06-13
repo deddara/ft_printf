@@ -6,17 +6,17 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 21:33:53 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/12 02:51:57 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/13 12:13:39 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "additional_funcs.h"
 
-t_data	*ft_lstnew()
+t_data	*ft_lstnew(void)
 {
 	t_data *var;
 
-	if(!(var = malloc(sizeof(t_data))))
+	if (!(var = malloc(sizeof(t_data))))
 		return (0);
 	var->flags = NO_FLAG;
 	var->width = 0;

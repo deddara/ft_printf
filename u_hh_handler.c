@@ -6,13 +6,13 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 10:09:49 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/13 05:44:39 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/13 11:31:54 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	u_precision_handler(unsigned char res, t_data *data_list, int numb_len)
+static int	u_prec_h(unsigned char res, t_data *data_list, int numb_len)
 {
 	data_list->len = data_list->precision;
 	if (data_list->flags & MINUS_FLAG)
@@ -28,8 +28,7 @@ static int	u_precision_handler(unsigned char res, t_data *data_list, int numb_le
 	return (1);
 }
 
-
-int	u_hh_handler(t_data *data_list, va_list ***args)
+int			u_hh_handler(t_data *data_list, va_list ***args)
 {
 	unsigned char	res;
 	unsigned int	numb_len;
@@ -43,8 +42,8 @@ int	u_hh_handler(t_data *data_list, va_list ***args)
 		space_printer(data_list);
 		return (1);
 	}
-	if ((data_list->precision != -1) && (data_list->precision >(int)numb_len))
-		return (u_precision_handler(res, data_list, numb_len));
+	if ((data_list->precision != -1) && (data_list->precision > (int)numb_len))
+		return (u_prec_h(res, data_list, numb_len));
 	if ((data_list->flags & MINUS_FLAG))
 	{
 		u_precision_print_handler(data_list, numb_len);

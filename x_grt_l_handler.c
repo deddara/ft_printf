@@ -6,18 +6,17 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 09:44:07 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/12 09:44:50 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/13 12:00:24 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
 static void	converter(char *hexadecimal, unsigned long int res)
 {
-	int j;
-	int i;
-	long int backup;
+	int			j;
+	int			i;
+	long int	backup;
 	char		*reverse;
 
 	if (!(reverse = (char *)malloc(sizeof(char) * 100)))
@@ -37,24 +36,23 @@ static void	converter(char *hexadecimal, unsigned long int res)
 	j--;
 	while (j >= 0)
 		hexadecimal[i++] = reverse[j--];
-	free (reverse);
+	free(reverse);
 }
 
-int	x_grt_l_handler(t_data *data_list, va_list ***args)
+int			x_grt_l_handler(t_data *data_list, va_list ***args)
 {
-	unsigned long int				res;
-	char			hexadecimal[100];
-	int				numb_len;
+	unsigned long int	res;
+	char				hexadecimal[100];
+	int					numb_len;
 
 	res = va_arg(***args, unsigned long int);
 	if (data_list->precision == 0 && !res)
 	{
-		data_list->len = 0;
 		space_printer(data_list);
 		return (1);
 	}
 	converter(hexadecimal, res);
-	if(!(numb_len = ft_strlen(hexadecimal)))
+	if (!(numb_len = ft_strlen(hexadecimal)))
 		numb_len = 1;
 	data_list->len = numb_len;
 	if ((data_list->precision != -1) && data_list->precision > numb_len)

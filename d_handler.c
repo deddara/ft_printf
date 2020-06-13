@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/04 19:07:52 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/12 03:06:48 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/13 10:59:43 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int			d_handler(t_data *data_list, va_list ***args)
 
 	res = va_arg(***args, int);
 	numb_len = num_len(res);
-	if(res == 0 && data_list->precision == 0)
+	if (res == 0 && data_list->precision == 0)
 		numb_len = 0;
 	data_list->len = numb_len;
 	d_flagcheck(res, data_list);

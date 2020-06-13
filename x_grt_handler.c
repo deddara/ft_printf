@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   X_handler.c                                        :+:      :+:    :+:   */
+/*   x_grt_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 06:24:55 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/12 09:07:59 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/13 12:13:53 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "ft_printf.h"
 
-static void	converter(char *hexadecimal,unsigned int res)
+static void	converter(char *hexadecimal, unsigned int res)
 {
-	int j;
-	int i;
-	unsigned int backup;
-	char		*reverse;
+	int				j;
+	int				i;
+	unsigned int	backup;
+	char			*reverse;
 
 	if (!(reverse = (char *)malloc(sizeof(char) * 100)))
 		return ;
@@ -37,11 +36,10 @@ static void	converter(char *hexadecimal,unsigned int res)
 	j--;
 	while (j >= 0)
 		hexadecimal[i++] = reverse[j--];
-	free (reverse);
+	free(reverse);
 }
 
-
-int	greater_x_handler(t_data *data_list, va_list ***args)
+int			greater_x_handler(t_data *data_list, va_list ***args)
 {
 	unsigned int	res;
 	char			hexadecimal[100];
@@ -50,12 +48,11 @@ int	greater_x_handler(t_data *data_list, va_list ***args)
 	res = va_arg(***args, unsigned int);
 	if (data_list->precision == 0 && !res)
 	{
-		data_list->len = 0;
 		space_printer(data_list);
 		return (1);
 	}
 	converter(hexadecimal, res);
-	if(!(numb_len = ft_strlen(hexadecimal)))
+	if (!(numb_len = ft_strlen(hexadecimal)))
 		numb_len = 1;
 	data_list->len = numb_len;
 	if ((data_list->precision != -1) && data_list->precision > numb_len)

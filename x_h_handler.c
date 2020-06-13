@@ -6,19 +6,24 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 09:37:18 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/12 09:38:47 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/13 12:03:12 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+void		hash_check(t_data *data_list, char *hex)
+{
+	if (data_list->flags & HASH_FLAG && hex[0] != 0)
+		data_list->len += 2;
+}
 
 static void	converter(char *hexadecimal, unsigned short res)
 {
-	int j;
-	int i;
-	int backup;
-	char		*reverse;
+	int		j;
+	int		i;
+	int		backup;
+	char	*reverse;
 
 	if (!(reverse = (char *)malloc(sizeof(char) * 100)))
 		return ;
@@ -37,10 +42,10 @@ static void	converter(char *hexadecimal, unsigned short res)
 	j--;
 	while (j >= 0)
 		hexadecimal[i++] = reverse[j--];
-	free (reverse);
+	free(reverse);
 }
 
-int	x_h_handler(t_data *data_list, va_list ***args)
+int			x_h_handler(t_data *data_list, va_list ***args)
 {
 	unsigned short	res;
 	char			hexadecimal[100];
@@ -49,12 +54,11 @@ int	x_h_handler(t_data *data_list, va_list ***args)
 	res = va_arg(***args, int);
 	if (data_list->precision == 0 && !res)
 	{
-		data_list->len = 0;
 		space_printer(data_list);
 		return (1);
 	}
 	converter(hexadecimal, res);
-	if(!(numb_len = ft_strlen(hexadecimal)))
+	if (!(numb_len = ft_strlen(hexadecimal)))
 		numb_len = 1;
 	data_list->len = numb_len;
 	if ((data_list->precision != -1) && data_list->precision > numb_len)
