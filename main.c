@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 16:25:14 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/19 23:01:51 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/20 02:25:17 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,9 @@ int main()
 	int i;
 	double k;
 
-	signed char j[0];
-	k = -42.13;
+	*((unsigned long *)(&k)) = DBL_NAN;
 	//int res = ft_printf("%0+*d", -2);
-	i = ft_printf("%f", k);
+	i = ft_printf("%6f", k);
 
 	printf("\n%d\n", i);
 	//int i = 10;

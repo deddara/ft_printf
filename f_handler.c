@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 17:46:27 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/19 23:05:17 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/20 02:30:17 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ static void f_flag_print(t_data *data_list, double res)
 	*((unsigned long *)(&n_inf)) = DBL_NINF;
 	if (res < 0 || res == n_inf)
 		write(1, "-", 1);
-	else if (res >= 0 && data_list->flags & PLUS_FLAG ||
-	(data_list->flags & PLUS_FLAG && res == inf))
+	else if ((res >= 0 && data_list->flags & PLUS_FLAG) ||
+	(data_list->flags & PLUS_FLAG && res == inf) || (!(res > 0.0 || res < 1.0) && data_list->flags & PLUS_FLAG ))
 		write(1, "+", 1);
-	else if (data_list->flags & SPACE_FLAG && res >= 0 ||
-	(data_list->flags & SPACE_FLAG && res == inf))
+	else if ((data_list->flags & SPACE_FLAG && res >= 0) ||
+	(data_list->flags & SPACE_FLAG && res == inf) || (!(res > 0.0 || res < 1.0) && data_list->flags & SPACE_FLAG ))
 		write(1, " ", 1);
 }
 static void f_flag_check(t_data *data_list, double res)
@@ -35,17 +35,18 @@ static void f_flag_check(t_data *data_list, double res)
 
 	if (res < 0 || res == n_inf)
 		data_list->len++;
-	else if (res >= 0 && data_list->flags & PLUS_FLAG ||
-	(data_list->flags & PLUS_FLAG && res == inf))
+	else if ((res >= 0 && data_list->flags & PLUS_FLAG) ||
+	(data_list->flags & PLUS_FLAG && res == inf) || (!(res > 0.0 || res < 1.0) && data_list->flags & PLUS_FLAG ))
 		data_list->len++;
-	else if (data_list->flags & SPACE_FLAG && res >= 0 ||
-	(data_list->flags & SPACE_FLAG && res == inf))
+	else if ((data_list->flags & SPACE_FLAG && res >= 0) ||
+	(data_list->flags & SPACE_FLAG && res == inf) || (!(res > 0.0 || res < 1.0) && data_list->flags & SPACE_FLAG))
 		data_list->len++;
 }
 
 static int inf_h(t_data *data_list, double res)
 {
 	data_list->len += 3;
+	data_list->flags = data_list->flags & 0b11111110;
 	if (data_list->flags & MINUS_FLAG)
 	{
 		f_flag_print(data_list, res);
@@ -61,13 +62,16 @@ static int inf_h(t_data *data_list, double res)
 static int nan_h(t_data *data_list, double res)
 {
 	data_list->len += 3;
+	data_list->flags = data_list->flags & 0b11111110;
 	if (data_list->flags & MINUS_FLAG)
 	{
+		f_flag_print(data_list, res);
 		write(1, "nan", 3);
 		space_printer(data_list);
 		return (1);
 	}
 	space_printer(data_list);
+	f_flag_print(data_list, res);
 	write(1, "nan", 3);
 	return (1);
 }
@@ -82,11 +86,9 @@ static int nan_inf(double res, t_data *data_list)
 	*((unsigned long *)(&spcl)) = DBL_NINF;
 	if(res == spcl)
 		return (inf_h(data_list, res));
-	*((unsigned long *)(&spcl)) = DBL_NAN;
-	if (res == spcl)
+	if (!(res > 0.0 || res < 1.0))
 		return (nan_h(data_list, res));
-	else
-		return(0);
+	return (0);
 }
 
 static void double_len(t_data *data_list, double res)
@@ -96,7 +98,7 @@ static void double_len(t_data *data_list, double res)
 	if (res < 0)
 		res *= -1;
 	dec = unum_ll_len((size_t)res);
-	if (data_list->precision != 0)
+	if (data_list->precision != 0 || data_list->flags & HASH_FLAG)
 		data_list->len ++;
 	data_list->len += data_list->precision;
 	data_list->len += dec;
@@ -110,7 +112,7 @@ static void put_double(t_data *data_list, double res)
 	if (res < 0)
 		res *= -1;
 	ft_u_ll_putnbr((size_t)res);
-	if (data_list->precision != 0)
+	if (data_list->precision != 0 || data_list->flags & HASH_FLAG)
 		write(1, ".", 1);
 	res = res - (size_t)res;
 	i = 0;
@@ -142,6 +144,42 @@ static int	put_double_add(double res, t_data *data_list)
 	return (1);
 }
 
+static double double_pow(int precision)
+{
+	double pow;
+	pow = 0.5;
+	while (precision-- > 0)
+		pow *= 0.1;
+	return (pow);
+}
+
+static double rounder(t_data *data_list, double res)
+{
+	double tmp;
+	int i;
+	int sign;
+
+	sign = 1;
+	if (res < 0)
+		sign = -1;
+	tmp = res;
+	i = -1;
+	while (i < data_list->precision)
+	{
+		tmp -=(size_t)tmp;
+		tmp *= 10;
+		++i;
+	}
+	if ((sign == 1 && tmp < 5.0) || (sign == -1 && tmp >= -5.0))
+		return (res);
+	else
+	{
+		tmp = double_pow(data_list->precision);
+		res += tmp * sign;
+	}
+	return (res);
+}
+
 int f_handler(t_data *data_list, va_list ***args)
 {
 	double res;
@@ -152,6 +190,7 @@ int f_handler(t_data *data_list, va_list ***args)
 		return (1);
 	if(data_list->precision == -1)
 		data_list->precision = 6;
+	res = rounder(data_list, res);
 	double_len(data_list, res);
 	if ((data_list->flags & MINUS_FLAG))
 	{
@@ -160,5 +199,5 @@ int f_handler(t_data *data_list, va_list ***args)
 		space_printer(data_list);
 		return (1);
 	}
-	put_double_add(res, data_list);
+	return (put_double_add(res, data_list));
 }
