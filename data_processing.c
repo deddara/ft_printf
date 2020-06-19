@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 22:12:54 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/13 13:23:32 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/19 17:46:16 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,11 @@ static int	specifier_data_processing(t_data *data_list, va_list **args)
 
 int			data_processing(t_data *data_list, va_list **args)
 {
-	if (data_list->type == 'd' && !data_list->l_specifier)
+	if (data_list->type == 'n')
+		return (1);
+	else if (data_list->type == 'f')
+		return (f_handler(data_list, &args));
+	else if (data_list->type == 'd' && !data_list->l_specifier)
 		return (d_handler(data_list, &(args)));
 	else if (data_list->type == 'c')
 		return (char_handler(data_list, &(args)));
@@ -116,5 +120,5 @@ int			data_processing(t_data *data_list, va_list **args)
 	else if (data_list->l_specifier)
 		return (specifier_data_processing(data_list, args));
 	else
-		return (1);
+		return (0);
 }

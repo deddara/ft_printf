@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 16:23:28 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/13 13:34:44 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/19 21:15:12 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 # include <stdio.h>
 # include "form_parser.h"
 # include "additional_funcs.h"
+
+# define DBL_INF	0x7FF0000000000000
+# define DBL_NINF	0xFFF0000000000000
+# define DBL_NAN	0x7FF0000000100000
 
 int		ft_printf(const char *str, ...);
 char	*form_parser(const char *str, va_list *args, int *count);
@@ -56,7 +60,8 @@ int		h_d_handler(t_data *data_list, va_list ***args);
 int		hh_d_handler(t_data *data_list, va_list ***args);
 void	ft_ll_putnbr(long long int n);
 char	*get_l_specifier(const char *str, t_data *data_list);
-int		n_handler(t_data *data_list, va_list ***args, int len);
+void	n_handler(t_data *data_list, va_list ***args, int len);
+int		f_handler(t_data *data_list, va_list ***args);
 void	ft_lstclear_and_n(t_data *data_list, va_list **args, int len);
 
 #endif
