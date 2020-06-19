@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 17:46:27 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/19 23:01:10 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/19 23:05:17 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ static void double_len(t_data *data_list, double res)
 {
 	int dec;
 
+	if (res < 0)
+		res *= -1;
 	dec = unum_ll_len((size_t)res);
 	if (data_list->precision != 0)
 		data_list->len ++;
@@ -105,11 +107,11 @@ static void put_double(t_data *data_list, double res)
 	int i;
 	char rem;
 
+	if (res < 0)
+		res *= -1;
 	ft_u_ll_putnbr((size_t)res);
 	if (data_list->precision != 0)
 		write(1, ".", 1);
-	if (res < 0)
-		res *= -1;
 	res = res - (size_t)res;
 	i = 0;
 	while (i < data_list->precision)
