@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 22:12:54 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/20 22:56:54 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/21 00:03:26 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		space_printer(t_data *data_list)
 		if (((data_list->flags & NULL_FLAG) && (data_list->precision) == -1
 		&& (data_list->type == 'd' || data_list->type == 'u' ||
 		data_list->type == 'x' || data_list->type == '%'
-		|| data_list->type == 'X')
+		|| data_list->type == 'X' || data_list->type == 's')
 		&& !(data_list->flags & MINUS_FLAG)) || ((data_list->flags & NULL_FLAG)
 		&& data_list->type == 'f' && !(data_list->flags & MINUS_FLAG)))
 		{

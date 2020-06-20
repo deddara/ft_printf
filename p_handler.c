@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 19:20:00 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/13 11:22:03 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/20 23:56:23 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,12 @@ int			p_simple_handler(char *hex, t_data *data_list, int numb_len)
 {
 	space_printer(data_list);
 	p_precision_print_handler(data_list, numb_len);
-	ft_putstr(hex);
+	if ((numb_len == 1 && data_list->precision == 0))
+	{
+		data_list->len--;
+		return(1);
+	}
+		ft_putstr(hex);
 	return (1);
 }
 
