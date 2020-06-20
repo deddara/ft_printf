@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 16:23:28 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/20 18:21:14 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/20 22:40:21 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 # define DBL_NAN	0x7FF0000000100000
 #define DBL_PZERO  0x0000000000000000
 #define DBL_NZERO  0x8000000000000000
-#define SIGN 0b10000000
 
 int		ft_printf(const char *str, ...);
 char	*form_parser(const char *str, va_list *args, int *count);
@@ -66,5 +65,8 @@ char	*get_l_specifier(const char *str, t_data *data_list);
 void	n_handler(t_data *data_list, va_list ***args, int len);
 int		f_handler(t_data *data_list, va_list ***args);
 void	ft_lstclear_and_n(t_data *data_list, va_list **args, int len);
-
+int		nan_inf(double res, t_data *data_list);
+double	rounder(t_data *data_list, double res);
+void	double_len(t_data *data_list, double res);
+void	f_flag_print(t_data *data_list, double res);
 #endif
