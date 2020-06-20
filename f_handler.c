@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 17:46:27 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/20 02:30:17 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/20 18:28:55 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void f_flag_print(t_data *data_list, double res)
 	double n_inf;
 	*((unsigned long *)(&inf)) = DBL_INF;
 	*((unsigned long *)(&n_inf)) = DBL_NINF;
-	if (res < 0 || res == n_inf)
+	if (res < 0 || res == n_inf || ((1.0 / res) == n_inf))
 		write(1, "-", 1);
 	else if ((res >= 0 && data_list->flags & PLUS_FLAG) ||
 	(data_list->flags & PLUS_FLAG && res == inf) || (!(res > 0.0 || res < 1.0) && data_list->flags & PLUS_FLAG ))
@@ -32,8 +32,7 @@ static void f_flag_check(t_data *data_list, double res)
 	double n_inf;
 	*((unsigned long *)(&inf)) = DBL_INF;
 	*((unsigned long *)(&n_inf)) = DBL_NINF;
-
-	if (res < 0 || res == n_inf)
+	if (res < 0 || res == n_inf || ((1.0 / res) == n_inf))
 		data_list->len++;
 	else if ((res >= 0 && data_list->flags & PLUS_FLAG) ||
 	(data_list->flags & PLUS_FLAG && res == inf) || (!(res > 0.0 || res < 1.0) && data_list->flags & PLUS_FLAG ))
