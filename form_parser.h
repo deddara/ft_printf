@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 19:27:29 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/13 09:32:53 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/20 22:57:35 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ typedef	struct		s_data
 	char			*null_str;
 	struct s_data	*next;
 }					t_data;
-char		*get_l_specifier(const char *str, t_data *data_list);
+char				*get_l_specifier(const char *str, t_data *data_list);
 
 #endif

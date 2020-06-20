@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 16:23:28 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/20 22:40:21 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/20 22:59:42 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@
 
 # define DBL_INF	0x7FF0000000000000
 # define DBL_NINF	0xFFF0000000000000
-# define DBL_NAN	0x7FF0000000100000
-#define DBL_PZERO  0x0000000000000000
-#define DBL_NZERO  0x8000000000000000
 
 int		ft_printf(const char *str, ...);
 char	*form_parser(const char *str, va_list *args, int *count);

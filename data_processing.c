@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 22:12:54 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/20 01:45:23 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/20 22:56:54 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void		space_printer(t_data *data_list)
 		&& (data_list->type == 'd' || data_list->type == 'u' ||
 		data_list->type == 'x' || data_list->type == '%'
 		|| data_list->type == 'X')
-		&& !(data_list->flags & MINUS_FLAG)) || ((data_list->flags & NULL_FLAG) &&
-		data_list->type == 'f' && !(data_list->flags & MINUS_FLAG)))
+		&& !(data_list->flags & MINUS_FLAG)) || ((data_list->flags & NULL_FLAG)
+		&& data_list->type == 'f' && !(data_list->flags & MINUS_FLAG)))
 		{
 			write(1, "0", 1);
 			data_list->len = data_list->len + 1;

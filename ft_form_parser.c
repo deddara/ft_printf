@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 21:33:20 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/19 17:45:43 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/20 22:59:03 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ static int	get_type(const char *str, t_data *data_list)
 		data_list->type = '%';
 	else if (*str == 'n')
 		data_list->type = 'n';
-	else if(*str == 'f')
+	else if (*str == 'f')
 		data_list->type = 'f';
 	else
 		return (0);

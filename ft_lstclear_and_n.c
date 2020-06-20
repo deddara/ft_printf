@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 13:06:19 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/13 13:34:34 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/20 22:49:43 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstclear_and_n(t_data *data_list, va_list **args, int len)
 {
-	if(data_list->type == 'n')
+	if (data_list->type == 'n')
 		n_handler(data_list, &args, len);
 	if (data_list)
 	{

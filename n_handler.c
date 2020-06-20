@@ -6,16 +6,16 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 12:34:40 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/19 17:37:49 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/20 22:55:54 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void n_short_h(va_list ****args, int len, t_data *data_list)
+static void	n_short_h(va_list ****args, int len, t_data *data_list)
 {
-	short int *res;
-	signed char *res1;
+	short int	*res;
+	signed char	*res1;
 
 	if (data_list->l_specifier & HH_SPEC)
 	{
@@ -29,13 +29,13 @@ static void n_short_h(va_list ****args, int len, t_data *data_list)
 	}
 }
 
-void	n_handler(t_data *data_list, va_list ***args, int len)
+void		n_handler(t_data *data_list, va_list ***args, int len)
 {
 	int				*res;
 	long int		*res1;
 	long long int	*res2;
 
-	if(!data_list->l_specifier)
+	if (!data_list->l_specifier)
 	{
 		res = va_arg(***args, int *);
 		res[0] = len;
@@ -53,4 +53,3 @@ void	n_handler(t_data *data_list, va_list ***args, int len)
 	else
 		n_short_h(&args, len, data_list);
 }
-
