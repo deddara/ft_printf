@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 19:20:00 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/20 23:56:23 by deddara          ###   ########.fr       */
+/*   Updated: 2020/06/22 16:03:26 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int			p_simple_handler(char *hex, t_data *data_list, int numb_len)
 	if ((numb_len == 1 && data_list->precision == 0))
 	{
 		data_list->len--;
-		return(1);
+		return (1);
 	}
-		ft_putstr(hex);
+	ft_putstr(hex);
 	return (1);
 }
 
