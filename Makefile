@@ -6,12 +6,20 @@
 #    By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/10 00:10:41 by deddara           #+#    #+#              #
-#    Updated: 2020/06/21 14:58:29 by deddara          ###   ########.fr        #
+#    Updated: 2020/07/25 14:16:47 by deddara          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-OBJDIR = obj/
+OBJ_DIR = obj/
+SRCDIR = src/
+HDR_DIR = includes/
+
+HEAD =  $(addprefix $(HDR_DIR), ft_printf.h)  $(addprefix $(HDR_DIR), form_parser.h) $(addprefix $(HDR_DIR), additional_funcs.h)
+
+CC = gcc
+FLAGS = -I$(HDR_DIR) -Wall -Wextra -Werror 
+
 SRC = d_h_handler d_handler d_hh_handler\
 d_l_handler d_ll_handler data_processing\
 double_rounder f_handler ft_form_parser\
@@ -25,24 +33,25 @@ u_ll_handler x_grt_h_handler x_grt_handler x_grt_hh_handler\
 x_grt_l_handler x_grt_ll_handler x_h_handler x_hh_handler\
 x_handler x_l_handler x_ll_handler
 
-OBJ = $(addprefix $(OBJDIR), $(SRC:=.o))
+SRC_FLS.O = $(addprefix $(OBJ_DIR), $(SRC:=.o))
 
 .PHONY: all clean fclean re bonus
 
-all: $(OBJDIR) $(NAME)
+all: $(NAME)
 
-$(NAME):$(OBJ)
-	@ar rc $(NAME) $?
+$(NAME): $(OBJ_DIR) $(SRC_FLS.O)
+	@ar rc $(NAME) $(SRC_FLS.O)
 	@ranlib $(NAME)
+	@echo "\033[32m[+] Make completed!\033[0m"
 
-$(OBJ): $(OBJDIR)%.o: $(SRCDIR)%.c
-	@gcc -Wall -Wextra -Werror -c $< -o $@
+$(OBJ_DIR):
+	@mkdir $(OBJ_DIR)
 
-$(OBJDIR):
-	@mkdir -p $(OBJDIR)
+$(SRC_FLS.O): $(OBJ_DIR)%.o: $(SRCDIR)%.c $(HEAD)
+	@$(CC) $(FLAGS) -c $< -o $@
 
 clean:
-	@rm -rf $(OBJDIR)
+	@rm -rf $(OBJ_DIR)
 
 fclean: clean
 	@rm -f $(NAME)

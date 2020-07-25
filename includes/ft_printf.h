@@ -6,7 +6,7 @@
 /*   By: deddara <deddara@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 16:23:28 by deddara           #+#    #+#             */
-/*   Updated: 2020/06/20 22:59:42 by deddara          ###   ########.fr       */
+/*   Updated: 2020/07/25 14:05:25 by deddara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 # include "form_parser.h"
 # include "additional_funcs.h"
 
